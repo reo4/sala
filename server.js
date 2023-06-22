@@ -10,7 +10,7 @@ app.get('/test', (req, res) => {
 })
 
 app.post('/test', (req, res) => {
-  console.log('recevied post')
+  console.log(req.data)
   res.send('recieved post');
 })
 
