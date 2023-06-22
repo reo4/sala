@@ -5,8 +5,13 @@ const PORT = process.env.PORT || 3030;
 // your code
 
 app.get('/test', (req, res) => {
-  console.log('recevied')
-  res.send('recieved');
+  console.log('recevied get')
+  res.send('recieved get');
+})
+
+app.post('/test', (req, res) => {
+  console.log('recevied post')
+  res.send('recieved post');
 })
 
 app.listen(PORT, () => {
