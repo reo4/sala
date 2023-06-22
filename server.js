@@ -10,8 +10,10 @@ app.get('/test', (req, res) => {
 })
 
 app.post('/test', (req, res) => {
-  console.log(req.data)
+  console.log(req)
   res.send('recieved post');
+
+  // 
 })
 
 app.listen(PORT, () => {
