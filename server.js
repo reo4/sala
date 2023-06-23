@@ -41,7 +41,7 @@ app.post('/test', async (req, res) => {
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: 'Bearer aa8d7f95bdca4ed81521cfade2f92275'
+        Authorization: 'Bearer 195c3ebff1439d91db5f473a92863dc4'
       },
       data: {
         customer_id: 1,
@@ -67,7 +67,7 @@ app.post('/test', async (req, res) => {
     }
   }
 
-  console.log(req.body)
+  // console.log(req.body)
   res.send('recieved post');
 
   // 
