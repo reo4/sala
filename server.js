@@ -13,7 +13,7 @@ app.get('/test', (req, res) => {
 })
 
 app.post('/test', (req, res) => {
-  const requestHMAC = req.header("x-salla-signature");
+  const requestHMAC = req.headers["x-salla-signature"];
   const event = req.body.event
   if (event === 'product.created') {
 
