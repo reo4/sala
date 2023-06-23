@@ -7,11 +7,6 @@ const PORT = process.env.PORT || 3030;
 app.use(express.urlencoded());
 app.use(express.json());
 
-app.get('/test', (req, res) => {
-  console.log('recevied get')
-  res.send('recieved get');
-})
-
 app.post('/test', (req, res) => {
   const requestHMAC = req.headers["x-salla-signature"];
   const event = req.body.event
