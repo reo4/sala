@@ -13,7 +13,12 @@ app.get('/test', (req, res) => {
 })
 
 app.post('/test', (req, res) => {
-  console.log(req.body)
+  const requestHMAC = req.header("x-salla-signature");
+  const event = req.body.event
+  if (event === 'product.created') {
+
+  }
+  console.log(requestHMAC, req.body)
   res.send('recieved post');
 
   // 
