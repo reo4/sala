@@ -33,6 +33,7 @@ app.use(express.json());
 app.post('/test', async (req, res) => {
   // const requestHMAC = req.headers["x-salla-signature"];
   const event = req.body.event
+
   if (event === 'product.created') {
     const options = {
       method: 'POST',
@@ -43,7 +44,7 @@ app.post('/test', async (req, res) => {
         Authorization: 'Bearer aa8d7f95bdca4ed81521cfade2f92275'
       },
       data: {
-        customer_id: 1438395499,
+        customer_id: 1,
         shipping_address: {
           country_id: 566146469,
           city_id: 2097610897,
@@ -54,7 +55,7 @@ app.post('/test', async (req, res) => {
           geocode: '21.4283792, 21.4283792'
         },
         payment: { status: 'paid', method: 'credit_card' },
-        products: [{ id: 784769282 }]
+        products: [{ id: 2 }]
       }
     };
 
@@ -65,6 +66,7 @@ app.post('/test', async (req, res) => {
       console.error(error);
     }
   }
+
   console.log(req.body)
   res.send('recieved post');
 
