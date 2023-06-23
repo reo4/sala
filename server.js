@@ -35,36 +35,41 @@ app.post('/test', async (req, res) => {
   const event = req.body.event
 
   if (event === 'product.created') {
-    const options = {
-      method: 'POST',
-      url: 'https://api.salla.dev/admin/v2/orders',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        Authorization: 'Bearer 195c3ebff1439d91db5f473a92863dc4'
-      },
-      data: {
-        customer_id: 1,
-        shipping_address: {
-          country_id: 566146469,
-          city_id: 2097610897,
-          block: 'Om El 9823489237',
-          street_number: 'jmoh El 8912749823764',
-          address: 'building 124234324, floor 212423',
-          postal_code: '23874982374',
-          geocode: '21.4283792, 21.4283792'
-        },
-        payment: { status: 'paid', method: 'credit_card' },
-        products: [{ id: 2 }]
-      }
-    };
+    axios.get('https://accounts.salla.sa/oauth2/user/info').then((response) => {
+      console.log(response.data)
+    }).catch((err) => {
+      console.log(err)
+    })
+    // const options = {
+    //   method: 'POST',
+    //   url: 'https://api.salla.dev/admin/v2/orders',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     Accept: 'application/json',
+    //     Authorization: 'Bearer 195c3ebff1439d91db5f473a92863dc4'
+    //   },
+    //   data: {
+    //     customer_id: 1,
+    //     shipping_address: {
+    //       country_id: 566146469,
+    //       city_id: 2097610897,
+    //       block: 'Om El 9823489237',
+    //       street_number: 'jmoh El 8912749823764',
+    //       address: 'building 124234324, floor 212423',
+    //       postal_code: '23874982374',
+    //       geocode: '21.4283792, 21.4283792'
+    //     },
+    //     payment: { status: 'paid', method: 'credit_card' },
+    //     products: [{ id: 2 }]
+    //   }
+    // };
 
-    try {
-      const { data } = await axios.request(options);
-      console.log(data);
-    } catch (error) {
-      console.error(error);
-    }
+    // try {
+    //   const { data } = await axios.request(options);
+    //   console.log(data);
+    // } catch (error) {
+    //   console.error(error);
+    // }
   }
 
   // console.log(req.body)
