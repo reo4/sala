@@ -32,7 +32,7 @@ app.use(express.json());
 
 app.post('/test', async (req, res) => {
   // const requestHMAC = req.headers["x-salla-signature"];
-  const event = req.body.event
+  // const event = req.body.event
 
   if (event === 'product.created') {
     axios.post('https://accounts.salla.sa/oauth2/token',
@@ -83,7 +83,7 @@ app.post('/test', async (req, res) => {
     // }
   }
 
-  // console.log(req.body)
+  console.log(req.headers)
   res.send('recieved post');
 
   // 
