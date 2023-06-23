@@ -14,12 +14,12 @@ app.use(express.json());
 //   url: 'https://accounts.salla.sa/oauth2/token',
 //   headers: { 'Content-Type': 'application/json' },
 //   data: {
-//     client_id: '6b2143a5-148a-4c4e-b6ee-2f2d975640b8',
-//     client_secret: 'aa8d7f95bdca4ed81521cfade2f92275',
-//     grant_type: 'authorization_code',
-//     code: 'CODE_PARAMETER',
-//     scope: 'offline_access',
-//     redirect_uri: 'REDIRECT_URI'
+// client_id: '6b2143a5-148a-4c4e-b6ee-2f2d975640b8',
+// client_secret: 'aa8d7f95bdca4ed81521cfade2f92275',
+// grant_type: 'authorization_code',
+// code: 'CODE_PARAMETER',
+// scope: 'offline_access',
+// redirect_uri: 'REDIRECT_URI'
 //   }
 // };
 
@@ -35,11 +35,22 @@ app.post('/test', async (req, res) => {
   const event = req.body.event
 
   if (event === 'product.created') {
-    axios.get('https://accounts.salla.sa/oauth2/user/info').then((response) => {
-      console.log(response.data)
-    }).catch((err) => {
-      console.log(err)
-    })
+    axios.post('https://accounts.salla.sa/oauth2/token',
+      {
+        client_id: '6b2143a5-148a-4c4e-b6ee-2f2d975640b8',
+        client_secret: 'aa8d7f95bdca4ed81521cfade2f92275',
+        grant_type: 'authorization_code',
+        code: 'CODE_PARAMETER',
+        scope: 'offline_access',
+        redirect_uri: 'REDIRECT_URI'
+      },
+      {
+        headers: { 'Content-Type': 'application/json' }
+      }).then((response) => {
+        console.log(response.data)
+      }).catch((err) => {
+        console.log(err)
+      })
     // const options = {
     //   method: 'POST',
     //   url: 'https://api.salla.dev/admin/v2/orders',
